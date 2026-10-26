@@ -1,0 +1,9 @@
+# Local audio sources
+
+The `audio/` folder was supplied by the project owner on October 16, 2026, described as audio from the original Zombieville game. The supplied files remain unchanged. They are third-party game recordings, separate from this project's short synthesized gameplay cues.
+
+`src/audio-assets.js` documents the exact local file mapping. The current game uses 34 distinct recordings for firearm and prototype attacks, cutting and punching, impacts, infected deaths, doors, switching, purchases, empty weapons, victory, player death, menu music and vehicle engines. death.mp3 remains available in the pack but is not played as background music. Engine start, engine loop and car-door recordings now accompany boarding, driving and exiting. Helicopter, minigun and other unmatched recordings are retained for future matching gameplay.
+
+The supplied ZombievilleIntro.mp3 loops only in menus. Gameplay, shelter, training, pause, the shop and death have sound effects without background music. death.mp3 remains in the supplied folder for future use. All procedural background music and continuous noise ambience have been removed. Missing music stays silent. Music and effects have separate volume controls. The recorded-effects toggle affects effect samples only; special infected and other unmatched short cues still use synthesis in src/soundscape.js. Chainsaw and flamethrower loops stop on release, reload, pause and lost focus.
+
+Continuous chainsaw playback uses loopStart=0 and loopEnd=60% of chainsaw.wav. Vehicle boarding uses engineStart.wav, driving uses engineLoop.wav, and exiting uses carDoor.wav. Menu clicks and page transitions use short generated cues routed directly to the effects bus so they remain audible while world combat is paused. Supplied files remain unchanged.

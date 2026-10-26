@@ -1,0 +1,13 @@
+{
+  "name": "dead-end-delivery",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test",
+    "check:routes": "node scripts/validate-routes.js",
+    "simulate": "node scripts/simulate.js"
+  }
+}

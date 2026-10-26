@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#152f31">
+  <title>Dead End — Survive the quarantine</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23dbef78'/%3E%3Cpath d='M17 13h14q22 0 22 19T31 51H17z' fill='%23152f31'/%3E%3Cpath d='M27 23h5q10 0 10 9T32 41h-5z' fill='%23dbef78'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/game-ui.css">
+</head>
+<body>
+  <canvas id="game" tabindex="0" aria-label="Dead End, a side-scrolling zombie survival game"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <header id="header">
+    <a class="brand" href="#" id="brand" aria-label="Dead End home"><span class="brand-icon">D<span>↗</span></span><span>DEAD END<span class="brand-caption">ONE MORE STREET.</span></span></a>
+    <nav aria-label="Main navigation"><button id="levelsNav" class="nav-button">Campaign</button><button id="museumNav" class="nav-button">Museum</button><button id="guideButton" class="nav-button">Field guide</button><button id="settingsButton" class="nav-button">Settings</button><button id="fullscreenButton" class="nav-button">Fullscreen <kbd>F11</kbd></button><button id="pauseButton" class="nav-button hidden">Pause <kbd>ESC</kbd></button></nav>
+    <span class="build-label">DEVELOPMENT BUILD / ALL SECTORS OPEN</span>
+  </header>
+
+  <main id="menu" class="screen menu-screen">
+    <div class="menu-copy"><div class="eyebrow"><span></span> QUARANTINE PROTOCOL / 013</div><h1>DEAD<span>END</span></h1><div class="title-chinese">SURVIVE THE QUARANTINE</div><p class="intro">No evacuation. No second chances.</p><div class="menu-actions"><button id="continueButton" class="button secondary hidden">Continue <span>01</span></button><button id="levelsButton" class="button primary">Campaign / Mission Select <span>02</span></button><button id="museumButton" class="button secondary">Quarantine Museum <span>03</span></button><button id="armoryButton" class="button secondary">Armory / Supply Shelf <span>04</span></button><button id="playButton" class="button secondary">New Survival <span>05</span></button></div><div class="run-note"><span class="tiny-cross">▰</span> 37 INFECTED SECTORS <span>／</span> ALL UNLOCKED <span>／</span> PERSISTENT EQUIPMENT</div></div>
+    <div class="scene-note"><span class="live-dot"></span> SIGNAL LOST <span class="scene-coordinate">NO EVACUATION / NO SECOND CHANCES</span></div>
+    <section class="roster" aria-labelledby="rosterTitle"><div class="roster-top"><h2 id="rosterTitle">CHOOSE YOUR SURVIVOR <span>PERSONNEL / 05</span></h2><span>Everyone has a way to survive.</span></div><div id="characterCards" class="character-cards"></div></section>
+    <footer class="menu-footer"><button id="soundButton">◖ Enable audio</button><button id="controlsButton">Controls <span>⌨</span></button><span>FULLSCREEN / HEADPHONES RECOMMENDED</span></footer>
+  </main>
+
+  <section id="hud" class="hidden" aria-label="Game status">
+    <div class="hud-player"><canvas id="portrait" width="60" height="64"></canvas><div><div class="hud-name"><span id="heroName"></span><span id="healthText">100 / 100</span></div><div class="health-track"><div id="healthFill"></div></div><div class="hud-loadout"><span id="weaponText"></span><span id="ammoText"></span></div></div></div>
+    <div class="hud-route"><span id="stageText">STAGE 01 · MIXED</span><strong id="districtText">The outskirts</strong><div class="route-track"><i></i><i></i><i></i><span id="routeFill"></span><div id="houseMarkers"></div></div><span id="missionObjective" class="mission-objective"></span><span id="nextShelter" class="next-shelter"></span></div>
+    <div class="hud-right"><span class="coin-icon">✦</span><strong id="moneyText">0</strong><div id="dogText" class="dog-status">DOG · NOT RESCUED</div><div id="contractStatus" class="contract-status"></div></div>
+    <div id="missionTask" class="mission-task hidden"><strong id="missionTaskTitle"></strong><span id="missionTaskDetail"></span><div><i id="missionTaskProgress"></i></div></div>
+    <div id="vehicleStatus" class="vehicle-status hidden" aria-live="polite"></div>
+    <div id="weaponDock" class="weapon-dock" aria-label="Equipped weapon and inventory"></div>
+    <div class="bottom-controls"><span><kbd>←</kbd><kbd>→</kbd> Move</span><span><kbd>↑</kbd> Jump / shelter</span><span><kbd>SPACE</kbd> Attack</span><span><kbd>X</kbd> Weapon</span><span><kbd>R</kbd> Reload</span><span><kbd>E</kbd> Vehicle / talk</span><span id="abilityHud"><kbd>C</kbd> <span id="abilityText">Ability</span></span></div>
+    <div id="shelterBadge" class="shelter-badge hidden"><span class="live-dot"></span><strong>SHELTERED</strong><span id="shelterIntegrityText"></span><span class="shelter-integrity"><i id="shelterIntegrityFill"></i></span><span>↑ TO LEAVE</span></div>
+  </section>
+  <section id="archiveScreen" class="archive-screen hidden" aria-label="Campaign and museum"></section>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="chapter" class="chapter"><span id="chapterNumber"></span><strong id="chapterTitle"></strong><span id="chapterSubtitle"></span></div>
+
+  <div id="modalLayer" class="modal-layer hidden">
+    <section id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"><div class="modal-heading"><span id="modalEyebrow" class="eyebrow"></span><button id="closeModal" class="close-button" aria-label="Close dialog">×</button></div><h2 id="modalTitle"></h2><div id="modalContent"></div></section>
+  </div>
+  <div id="desktopHint">Made for a keyboard. Open on a desktop for the full adventure.</div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
